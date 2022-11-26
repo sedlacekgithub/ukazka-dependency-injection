@@ -9,4 +9,4 @@ by to znamenalo upravovat importy primo v te tride, ktere se testovani tyka, coz
 
 **Jak to funguje v Angularu?**
 
-![This is an image](https://ibb.co/DzhmBL1)
+![This is an image](https://i.ibb.co/GnyGZFd/injector.png)
