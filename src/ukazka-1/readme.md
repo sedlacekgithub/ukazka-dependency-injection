@@ -11,8 +11,19 @@ Nebudeme tedy menit primo import ve tride kterou testujeme, ale jen pres konstru
 
 **Jak to funguje v Angularu?**
 
-Pokud je potreba vytvorit novou instanci tridy, zavola si Angular na pomoc specialni tridu Injector.
-Injector vytvori zavislosti a vrati pres factory funkci instanci dane tridy.
+Pri obaleni tridy dekoratorem @Component Angular automaticky vytvori Injector a Provider pro danou komponentu. (dekorator je prilepi na prototype)
+Token provideru bude nazev tridy. Injector si precte jake zavislosti HelloComponent potrebuje a vyhleda si v Provideru tyto instance (pole deps). Pote tyto zavislosti vezme a pri volani
+factory funkce, kterou Provider take poskyuje je vstreli mezi zavorky (klasicky new HelloComponent(httpClient)).
+
+```javascript
+@Component({
+  selector: 'hello',
+  template: '',
+})
+export class HelloComponent {
+  constructor(private http: HttpClient) {}
+}
+```
 
 **Injector**
 
@@ -26,7 +37,8 @@ V pripade registrace Provideru pres dekorator @Injectable providedIn: 'root', sk
 Pri pozadani o instanci ve tride musi tedy Angular projit skrz vsechny Injectory az k RootModuleInjectoru a az teprve tam najde Provider ktery hleda.
 
 Pozor:
-Pokud je ovsem Provider nalezen v aktualnim Injectoru, dale nahoru nekouka cimz obcas vznika novackovska chyba kdy dany programator umisti napr. sluzbu kterou jiz ma providnutou pomoci dekoratoru Injectable do pole provideru v komponente ve ktere pracuje. Omylem mu tak vznikne uplne nova instance sluzby.
+Pokud je ovsem Provider nalezen v aktualnim Injectoru, dale nahoru nekouka cimz obcas vznika juniorska chyba kdy dany programator umisti napr. sluzbu kterou jiz ma
+providnutou pomoci dekoratoru Injectable do pole provideru v komponente ve ktere pracuje. Omylem mu tak vznikne uplne nova instance sluzby.
 
 Pozor2:
 V pripade nenalezeni Provideru v zadnem Injectoru je zobrazna hlaska StaticInjectorError - No provider for ... service!
@@ -47,10 +59,12 @@ Priklad vytvoreni sluzby z tokenu pomoci Injectoru:
 
 **Provider**
 
-Provider je v Angularu objekt, ktery presne popisuje jak ma byt vytvorena instance tokenu. Angular si vytvori Provider ve vybranych pripadech automaticky a to pokud: ..vlozime napr. tridu rucne do Providers pole v @NgModule,@Component nebo @Directive. Druhy, castejsi pripad je v pripade pouziti dekoratoru @Injectable v parametrem providedIn.
+Provider je v Angularu objekt, ktery presne popisuje jak ma byt vytvorena instance tokenu. Angular si vytvori Provider ve vybranych pripadech automaticky a to pokud: ..vlozime napr. tridu rucne do Providers pole v @NgModule,@Component,@Directive, @Pipe atd. Druhy, castejsi pripad je v pripade pouziti dekoratoru @Injectable v parametrem providedIn.
 
 Zajimavost: diky teto logice je mozne v child komponente pres konstruktor vlozit nejen instanci sluzby, ale
 i instanci primeho rodice.
+
+Zaroven tak neni potreba pouzivat dekorator @Injectable jiz dekorovane tridy.
 
 ```javascript
 const provider = {

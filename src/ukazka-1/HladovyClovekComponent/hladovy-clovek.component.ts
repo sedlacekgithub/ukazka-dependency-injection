@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { kuchynProviderFunction, KUCHYN_TOKEN, Kuchyn } from '../kuchyn';
 
@@ -42,3 +43,4 @@ export class HladovyClovekComponent implements OnInit {
     console.log('Injector vytvoril instanci ', udelejSnidaniInstance);
   }
 }
+
