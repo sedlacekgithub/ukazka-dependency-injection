@@ -10,11 +10,7 @@ by to znamenalo upravovat importy primo v te tride, ktere se testovani tyka, coz
 **Jak to funguje v Angularu?**
 
 Angular zada prikaz Injectoru k vytvoreni instance tridy. Injector zjisti, zda ma dana trida nejake zavislosti a pokud ano,
-zacne hledat jejich Provider. Je dulezite upoznornit na to, ze existuje velke mnozstvi injectoru a kazdy z nich ma svoje pole provideru.
-Pokud Injector nenajde Provider v dane komponente, odkaze se na vyse postaveny Injector s dotazem na Provider, takto pokracujeme z Element Injectoru az po
-Null Injector, ktery stoji v hiearchii stromu nahore. V pripade nenalezeni Provideru je vyhozena hlaska StaticInjectorError - No provider for UdelejSnidaniService service!
-
-![This is an image](https://i.ibb.co/GnyGZFd/injector.png)
+zacne hledat jejich Provider. Pokud Injector nenajde Provider v dane komponente, odkaze se na vyse postaveny Injector s dotazem na Provider, takto pokracujeme z Element Injectoru az po Null Injector, ktery stoji v hiearchii stromu nahore. V pripade nenalezeni Provideru je vyhozena hlaska StaticInjectorError - No provider for UdelejSnidaniService service!
 
 **Injector**
 
@@ -46,6 +42,8 @@ Priklad vytvoreni sluzby z tokenu pomoci Injectoru:
     });
     const kuchynInstance = injector.get(KUCHYN_TOKEN);
 ```
+
+![This is an image](https://i.ibb.co/GnyGZFd/injector.png)
 
 **Provider**
 
@@ -79,3 +77,5 @@ Existuje dalsi moznost, jak jeste vice do hloubky konfigurovat chovani DI. Angul
 2. @SkipSelf - Naopak preskakuje aktualni Injector a diva se po Provideru o level vyse a dale
 3. @Optional - Pokud Provider nenajde, misto vyhozeni chyby proste vrati Null.
 4. @Host - TODO :D
+
+Dobre je vedet ze tyto dekoratory lze kombinovat.
