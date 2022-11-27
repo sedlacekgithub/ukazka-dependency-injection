@@ -43,8 +43,6 @@ Priklad vytvoreni sluzby z tokenu pomoci Injectoru:
     const kuchynInstance = injector.get(KUCHYN_TOKEN);
 ```
 
-![This is an image](https://i.ibb.co/GnyGZFd/injector.png)
-
 **Provider**
 
 Provider je v Angularu objekt, ktery presne popisuje jak ma byt vytvorena instance tokenu. Angular si vytvori Provider ve vybranych pripadech automaticky a to pokud: ..vlozime napr. tridu rucne do Providers pole v @NgModule,@Component nebo @Directive. Druhy, castejsi pripad je v pripade pouziti dekoratoru @Injectable v parametrem providedIn.
