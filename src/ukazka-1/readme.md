@@ -12,8 +12,7 @@ Nebudeme tedy menit primo import ve tride kterou testujeme, ale jen pres konstru
 **Jak to funguje v Angularu?**
 
 Pri obaleni tridy dekoratorem @Component Angular automaticky vytvori Injector a Provider pro danou komponentu. (dekorator je prilepi na prototype)
-Token provideru bude nazev tridy. Injector si precte jake zavislosti HelloComponent potrebuje a vyhleda si v Provideru tyto instance (pole deps). Pote tyto zavislosti vezme a pri volani
-factory funkce, kterou Provider take poskyuje je vstreli mezi zavorky (klasicky new HelloComponent(httpClient)).
+Token provideru bude nazev tridy. Injector si precte jake zavislosti HelloComponent potrebuje a vyhleda si v Provideru tyto instance (pole deps). Pote tyto zavislosti vezme a pri volani factory funkce, kterou Provider take poskyuje je vstreli mezi zavorky (klasicky new HelloComponent(httpClient)).
 
 ```javascript
 @Component({
