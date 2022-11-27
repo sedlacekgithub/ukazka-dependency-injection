@@ -56,7 +56,7 @@ i instanci primeho rodice.
 ```javascript
 const provider = {
   provide: KUCHYN_TOKEN, // token nebo string
-  useFactory: kuchynProviderFuncion, // funkce, ktera vytvari instanci
+  useFactory: kuchynProviderFunction, // funkce, ktera vytvari instanci
   deps: [], // pokud by kuchynProvider mel vlastni zavislosti, je potreba je uvest zde
 },
 ```
