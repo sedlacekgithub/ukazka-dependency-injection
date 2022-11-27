@@ -1,16 +1,18 @@
 **Angular Dependency Injection**
 
 Zakladni myslenka DI je moznost konzumovat instance trid, bez nutnosti starat se o to, jak a kde se tyto instance vytvareji.
-Vyhoda tedy spociva v tom, ze pokud se rozhodnu zmenit implementaci tridy kterou konzumuji jinde, tak to delam pouze na jednom miste.
-V opacnem pripade bych musel obehnout celou aplikaci a upravit vsechny mista, kde se intance dane tridy vytvari a konzumuje.
 
-Dobrym prikladem jsou automaticke testy, kdy skoro vzdy potrebujem prohodit implementaci tridy za mock implementaci a bez DI
-by to znamenalo upravovat importy primo v te tride, ktere se testovani tyka, coz nikdo delat nechce.
+Priklad: mam 100 ruznych trid, ktere nezavisle na sobe vytvareji instanci moji tridy. Musi tedy pokazde pres konstruktor vlozit
+vsechny potrebne parametry a instanci vytvorit. V momente kdy se programator rozhodne pridat jeste jeden parametr konstruktoru,
+musi zaroven obehnout vsech 100 trid a tento parametr pri zakladani nove instance do konstruktoru pridat rucne.
+
+Druhym pripadem muzou byt automaticke testy, kde vetsinou potrebujeme podvrhnout puvodni tridu za jeji mock implementaci (napr. u http callu).
+Nebudeme tedy menit primo import ve tride kterou testujeme, ale jen pres konstruktor posleme nasi podvrhnutou zavislost ktera ma stejnou signaturu jako originalni trida.
 
 **Jak to funguje v Angularu?**
 
-Angular zada prikaz Injectoru k vytvoreni instance tridy. Injector zjisti, zda ma dana trida nejake zavislosti a pokud ano,
-zacne hledat jejich Provider. Pokud Injector nenajde Provider v dane komponente, odkaze se na vyse postaveny Injector s dotazem na Provider, takto pokracujeme z Element Injectoru az po Null Injector, ktery stoji v hiearchii stromu nahore. V pripade nenalezeni Provideru je vyhozena hlaska StaticInjectorError - No provider for UdelejSnidaniService service!
+Pokud je potreba vytvorit novou instanci tridy, zavola si Angular na pomoc specialni tridu Injector.
+Injector vytvori zavislosti a vrati pres factort funkci instanci dane tridy.
 
 **Injector**
 
