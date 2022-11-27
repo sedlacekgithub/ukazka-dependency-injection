@@ -17,6 +17,7 @@ Null Injector, ktery stoji v hiearchii stromu nahore. V pripade nenalezeni Provi
 ![This is an image](https://i.ibb.co/GnyGZFd/injector.png)
 
 **Injector**
+
 Injector je Angulari trida zodpovedna za vytvoreni instance zavislosti pro danou tridu/servisu.
 Existuji dva typy Injectoru, jeden pro Moduly (ModuleInjector) a druhy pro Komponenty a Direktivy (ElementInjector).
 Kazdy Injector dostava sve pole Provideru podle toho, kde vzniknul. Diky tomu ze jsou oba typy Injectoru stromove struktury
