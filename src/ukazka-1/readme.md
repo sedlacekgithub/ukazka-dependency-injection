@@ -89,6 +89,5 @@ Existuje dalsi moznost, jak jeste vice do hloubky konfigurovat chovani DI. Angul
 1. @Self - Angular hleda Provider pouze v aktualnim Injectoru ( napriklad ve tride ve ktere se aktualne nachazi)
 2. @SkipSelf - Naopak preskakuje aktualni Injector a diva se po Provideru o level vyse a dale
 3. @Optional - Pokud Provider nenajde, misto vyhozeni chyby proste vrati Null.
-4. @Host - TODO :D
 
 Dobre je vedet ze tyto dekoratory lze kombinovat.
