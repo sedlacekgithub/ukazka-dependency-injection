@@ -12,7 +12,7 @@ Nebudeme tedy menit primo import ve tride kterou testujeme, ale jen pres konstru
 **Jak to funguje v Angularu?**
 
 Pokud je potreba vytvorit novou instanci tridy, zavola si Angular na pomoc specialni tridu Injector.
-Injector vytvori zavislosti a vrati pres factort funkci instanci dane tridy.
+Injector vytvori zavislosti a vrati pres factory funkci instanci dane tridy.
 
 **Injector**
 
